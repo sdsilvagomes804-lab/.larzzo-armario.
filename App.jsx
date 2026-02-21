@@ -1,4 +1,42 @@
-import React, { useState } from "react";
+import React, { useState } const desenharArmario = () => {
+  const largura = 300;
+  const altura = 400;
+  const larguraPorta = largura / portas;
+
+  return (
+    <svg width={largura} height={altura} style={{background:"#eee",borderRadius:8}}>
+      
+      {/* Corpo */}
+      <rect x="0" y="0" width={largura} height={altura} fill={cor} stroke="#333" strokeWidth="3"/>
+
+      {/* Portas */}
+      {Array.from({ length: portas }).map((_, i) => (
+        <line
+          key={i}
+          x1={larguraPorta * i}
+          y1="0"
+          x2={larguraPorta * i}
+          y2={altura}
+          stroke="#222"
+          strokeWidth="2"
+        />
+      ))}
+
+      {/* Gavetas */}
+      {Array.from({ length: gavetas }).map((_, i) => (
+        <rect
+          key={i}
+          x={20}
+          y={altura - (i+1)*60}
+          width={largura-40}
+          height="50"
+          fill="#ffffff88"
+          stroke="#222"
+        />
+      ))}
+    </svg>
+  );
+}; from "react";
 
 export default function App() {
   const [portas, setPortas] = useState(2);
