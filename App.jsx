@@ -1,4 +1,40 @@
-import React, { useState } const desenharArmario = () => {
+<div style={{
+  width:"100%",
+  background:"#222",
+  color:"white",
+  padding:"15px 20px",
+  display:"flex",
+  alignItems:"center",
+  gap:15,
+  marginBottom:20
+}}>
+  <img
+    src="/logo.png"
+    alt="logo"
+    style={{height:50}}
+  />
+
+  <div>
+    <h1 style={{margin:0,fontSize:22}}>Larzzo Móveis</h1>
+    <span style={{fontSize:14,opacity:0.8}}>
+      Armários infantis sob medida
+    </span>
+  </div>
+</div>import React, { useState } const desenharArmario = () => {
+  <h2 style={{marginTop:20}}>
+  Valor estimado: R$ {calcularPreco().toFixed(2)}
+</h2>
+  const calcularPreco = () => {
+  let preco = 450;
+
+  preco += portas * 120;
+  preco += gavetas * 95;
+
+  if (cor === "amadeirado") preco += 120;
+  if (cor === "colorido") preco += 180;
+
+  return preco;
+};
   const largura = 300;
   const altura = 400;
   const larguraPorta = largura / portas;
@@ -80,7 +116,19 @@ export default function App() {
     fontSize:18
   }}
 >
-  Enviar orçamento no WhatsApp
+  const enviarWhats = () => {
+  const preco = calcularPreco();
+
+  const msg =
+    `Olá! Quero orçamento do armário infantil:\n` +
+    `${portas} portas\n` +
+    `${gavetas} gavetas\n` +
+    `Cor: ${cor}\n` +
+    `Valor estimado: R$ ${preco.toFixed(2)}`;
+
+  const url = `https://wa.me/5521996068074?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank");
+};
 </button>
       <p>{portas} portas</p>
       <p>{gavetas} gavetas</p>
