@@ -95,6 +95,6 @@ export default function App() {
   const url = `https://wa.me/5521996068074?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank");
 };
-    </div>
-  );
+    
+  );<div className="preview"></div>
 }
