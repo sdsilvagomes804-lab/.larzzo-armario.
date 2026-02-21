@@ -1,45 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LARZZO - Monte seu Armário</title>
-  </head>
-  <body style="margin:0;background:#000;">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
-{
-  "name": "larzzo-armario",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "jspdf": "^2.5.1"
-  },
-  "devDependencies": {
-    "vite": "^5.0.0"
-  }
+import React, { useState } from "react";
+
+export default function App() {
+  const [portas, setPortas] = useState(2);
+  const [gavetas, setGavetas] = useState(2);
+  const [cor, setCor] = useState("Branco");
+
+  return (
+    <div style={{fontFamily:"Arial", padding:20}}>
+      <h1>Configurador de Armário Infantil</h1>
+      <p>Módulo 90 x 240 cm</p>
+
+      <h3>Portas</h3>
+      <input type="range" min="1" max="4" value={portas}
+        onChange={(e)=>setPortas(e.target.value)} />
+      <p>{portas} portas</p>
+
+      <h3>Gavetas</h3>
+      <input type="range" min="0" max="6" value={gavetas}
+        onChange={(e)=>setGavetas(e.target.value)} />
+      <p>{gavetas} gavetas</p>
+
+      <h3>Cor</h3>
+      <select onChange={(e)=>setCor(e.target.value)}>
+        <option>Branco</option>
+        <option>Amadeirado</option>
+        <option>Colorido</option>
+      </select>
+
+      <hr/>
+
+      <h2>Resumo</h2>
+      <p>{portas} portas</p>
+      <p>{gavetas} gavetas</p>
+      <p>Cor: {cor}</p>
+    </div>
+  );
 }
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-export default defineConfig({
-  plugins: [react()],
-})
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
