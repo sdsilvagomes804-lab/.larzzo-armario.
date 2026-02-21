@@ -30,9 +30,33 @@ export default function App() {
       <hr/>
 
       <h2>Resumo</h2>
+      <button
+  onClick={enviarWhats}
+  style={{
+    marginTop:20,
+    padding:"15px 25px",
+    background:"#25D366",
+    color:"white",
+    border:"none",
+    borderRadius:8,
+    fontSize:18
+  }}
+>
+  Enviar orçamento no WhatsApp
+</button>
       <p>{portas} portas</p>
       <p>{gavetas} gavetas</p>
       <p>Cor: {cor}</p>
+      const enviarWhats = () => {
+  const msg =
+    `Olá! Quero orçamento do armário infantil:\n` +
+    `${portas} portas\n` +
+    `${gavetas} gavetas\n` +
+    `Cor: ${cor}`;
+
+  const url = `https://wa.me/5521996068074?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank");
+};
     </div>
   );
 }
